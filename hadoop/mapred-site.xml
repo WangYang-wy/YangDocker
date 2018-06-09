@@ -1,0 +1,6 @@
+<configuration>
+ 	<property>
+        <name>mapred.job.tracker</name>
+        <value>http://master:9001</value>
+     </property>
+</configuration>
