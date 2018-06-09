@@ -1,6 +1,10 @@
 FROM ubuntu:16.04
 
-RUN softwares='apt-utils vim net-tools iputils-ping openssh-server openssh-client zsh wget git curl openjdk-8-jdk scala tree' \ 
+# RUN softwares='apt-utils vim net-tools iputils-ping openssh-server openssh-client zsh wget git curl openjdk-8-jdk scala tree' \ 
+# && apt-get update && apt-get install -y $softwares \
+# && rm -rf /var/lib/apt/lists/* 
+
+RUN softwares='apt-utils wget openssh-server openssh-client' \ 
 && apt-get update && apt-get install -y $softwares \
 && rm -rf /var/lib/apt/lists/* 
 
@@ -12,7 +16,7 @@ RUN softwares='apt-utils vim net-tools iputils-ping openssh-server openssh-clien
 # hadoop 环境: 
 
 # spark 搭建
-# RUN wget https://github.com/apache/spark/archive/v2.2.0.tar.gz
+RUN wget https://github.com/apache/spark/archive/v2.2.0.tar.gz
 # tar -zxvf v2.2.0.tar.gz -C /usr/local/
 # 把spark添加到环境变量：':/usr/local/spark-2.2.0/bin:/usr/local/spark-2.2.0/sbin'
 

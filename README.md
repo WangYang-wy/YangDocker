@@ -2,6 +2,16 @@
 
 自助搭建的 Docker。
 
+## 操作指南
+
+先将项目 clone 到本地，然后进入目录，然后运行：
+
+```bash
+bash ./deploy.sh
+```
+
+然后等待。
+
 ## 操作系统
 
 ubuntu:16.04
@@ -34,5 +44,3 @@ docker run -ti --name master --hostname=Master ubuntu:16.04 bash -->
 - python3
 - hadoop-3.0.0
 - spark-2.2.0
-
-## 操作指南

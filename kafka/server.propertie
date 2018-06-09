@@ -1,0 +1,2 @@
+log.dirs=/tmp/kafka-logs
+zookeeper.connect=master:2181,slave1:2181,slave2:2181
