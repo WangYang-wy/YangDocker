@@ -44,3 +44,7 @@ docker run -ti --name master --hostname=Master ubuntu:16.04 bash -->
 - python3
 - hadoop-3.0.0
 - spark-2.2.0
+
+## 参考
+
+1. [利用Docker搭建大数据处理集群](https://blog.csdn.net/iigeoxiaoyang/article/details/53020066)
