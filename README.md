@@ -1,6 +1,6 @@
 # YangDocker
 
-自助搭建的 Docker。
+自助搭建的 hadoop + spark + kafka 集群，一主两从。
 
 ## 操作指南
 
@@ -42,7 +42,7 @@ docker run -ti --name master --hostname=Master ubuntu:16.04 bash -->
 
 - jdk1.8
 - python3
-- hadoop-3.0.0
+- hadoop-2.8.0
 - spark-2.2.0
 
 ## 参考
