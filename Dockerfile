@@ -1,19 +1,19 @@
 FROM ubuntu:16.04
 
-RUN softwares='apt-utils vim net-tools iputils-ping openssh-server openssh-client wget zsh git curl openjdk-8-jdk scala tree' \ 
-&& apt-get update && apt-get install -y $softwares \
-&& rm -rf /var/lib/apt/lists/* 
-
-# 小测试。
-# RUN softwares='apt-utils wget openssh-server openssh-client zsh git' \ 
+# RUN softwares='apt-utils vim net-tools iputils-ping openssh-server openssh-client wget zsh git curl openjdk-8-jdk scala tree' \ 
 # && apt-get update && apt-get install -y $softwares \
 # && rm -rf /var/lib/apt/lists/* 
+
+# 小测试。
+RUN softwares='apt-utils wget openssh-server openssh-client zsh git curl vim' \ 
+&& apt-get update && apt-get install -y $softwares \
+&& rm -rf /var/lib/apt/lists/* 
 
 # 环境安装路径。
 RUN install_path='/usr/local/'
 
 # oh-my-zsh
-RUN curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
+# RUN curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
 
 # zsh 风格 ys。
 
