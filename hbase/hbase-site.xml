@@ -21,7 +21,7 @@
         
     <property>
         <name>hbase.zookeeper.property.dataDir</name>
-        <value>/usr/local/src/hbase-0.98.24-hadoop1/zookeeper</value>
+        <value>/usr/local/hbase-0.98.24-hadoop1/zookeeper</value>
     </property>
         
     <property>
