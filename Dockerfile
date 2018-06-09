@@ -19,13 +19,13 @@ RUN softwares='apt-utils wget curl' \
 #     && chsh -s /bin/zsh \
 #     && sed -ri 's/^ZSH_THEME="robbyrussell"/ZSH_THEME="ys"/' /root/.zshrc
 
-# hadoop 环境安装.
+# hadoop 环境安装：
 RUN wget http://archive.apache.org/dist/hadoop/common/hadoop-2.8.0/hadoop-2.8.0-src.tar.gz \
     && tar -zxvf /hadoop-2.8.0-src.tar.gz -C /usr/local/ \
     && mv /usr/local/hadoop-2.8.0-src /usr/local/hadoop \
     && rm /hadoop-2.8.0-src.tar.gz
 
-# spark 环境安装，重命名，删除压缩包：
+# spark 环境安装：
 RUN wget https://github.com/apache/spark/archive/v2.2.0.tar.gz \
     && tar -zxvf /v2.2.0.tar.gz -C /usr/local/ \
     && mv /usr/local/spark-2.2.0 /usr/local/spark \
