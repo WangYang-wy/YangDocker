@@ -4,7 +4,11 @@ RUN softwares='apt-utils vim net-tools iputils-ping openssh-server openssh-clien
 && apt-get update && apt-get install -y $softwares \
 && rm -rf /var/lib/apt/lists/* 
 
-RUN curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
+# RUN curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
+
+# zsh 风格 ys。
+
+# hadoop 环境: wget https://github.com/apache/hadoop/archive/rel/release-3.0.0.tar.gz
 
 # 修改zsh的一些配置。
 
