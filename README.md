@@ -1,6 +1,6 @@
 # YangDocker
 
-自助搭建的 hadoop + spark + kafka 集群，一主两从。
+自助搭建的 hadoop + spark + kafka + zookeeper + storm + hbase + hive + flume 集群，一主两从。
 
 ## 操作指南
 
