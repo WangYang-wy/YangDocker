@@ -3,6 +3,7 @@
         <name>hadoop.tmp.dir</name>
         <value>/usr/local/hadoop/tmp</value>
     </property>
+    
     <property>
         <name>fs.default.name</name>
         <value>hdfs://master:9000</value>

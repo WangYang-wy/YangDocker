@@ -13,6 +13,9 @@ RUN softwares='apt-utils wget curl openjdk-8-jdk scala' \
 RUN wget http://archive.apache.org/dist/hadoop/common/hadoop-2.8.0/hadoop-2.8.0-src.tar.gz \
     && tar -zxvf /hadoop-2.8.0-src.tar.gz -C /usr/local/ \
     && mv /usr/local/hadoop-2.8.0-src /usr/local/hadoop \
+    && mkdir /usr/local/hadoop/tmp/ \ 
+    && mkdir /usr/local/hadoop/data/ \ 
+    && mkdir /usr/local/hadoop/name/ \ 
     && rm /hadoop-2.8.0-src.tar.gz
 
 # spark 环境安装：
