@@ -1,8 +1,8 @@
 FROM ubuntu:16.04
 
 # 将源更换一下，速度更快。
-ADD ./base/sources.list /etc/apt/
+ADD ./sources.list /etc/apt/
 
 RUN apt-get update -y && apt-get upgrade -y
 
-RUN apt-get install -y apt-utils
+RUN apt-get install -y apt-utils curl wget openjdk-8-jdk scala && rm -rf /var/lib/apt/lists/*
