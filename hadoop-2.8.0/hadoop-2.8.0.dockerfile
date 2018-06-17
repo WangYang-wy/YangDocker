@@ -14,6 +14,9 @@ RUN wget http://archive.apache.org/dist/hadoop/common/hadoop-2.8.0/hadoop-2.8.0.
     && mkdir /usr/local/hadoop/name/ \ 
     && rm /hadoop-2.8.0.tar.gz
 
+#这个文件默认不存在，需要从 mapred-site.xml.template 复制过来
+RUN cp mapred-site.xml.template mapred-site.xml
+
 # 添加配置文件：
 ADD ./hadoop/core-site.xml /usr/local/hadoop/etc/hadoop
 ADD ./hadoop/hdfs-site.xml /usr/local/hadoop/etc/hadoop
