@@ -21,6 +21,7 @@
         <name>mapred.job.tracker</name>
         <value>http://master:9001</value>
      </property>
+    
     <!-- 通知框架MR使用YARN -->
     <property>
         <name>mapreduce.framework.name</name>
