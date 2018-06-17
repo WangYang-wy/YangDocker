@@ -25,15 +25,9 @@ docker run -ti --name slave2 --hostname=slave2 ubuntu:16.04 bash
 ## 工具包
 
 - openjdk-8-jdk
-- zsh
-- oh-my-zsh
-- git
 - wget
 - curl
-- vim
-- openssh-server
-- openssh-client
-- tree
+- scala
 
 ## 环境
 
