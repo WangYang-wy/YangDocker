@@ -5,7 +5,7 @@ ADD ./sources.list /etc/apt/
 
 RUN apt-get update -y && apt-get upgrade -y
 
-RUN apt-get install -y apt-utils curl wget&& rm -rf /var/lib/apt/lists/*
+RUN apt-get install -y apt-utils wget && rm -rf /var/lib/apt/lists/*
 
 # 这里最好不要升级pip3，有bug，以及，下载包时，换源增加下载速度。
 # RUN pip3 install numpy scipy pandas matplotlib -i https://pypi.douban.com/simple/
