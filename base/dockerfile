@@ -12,3 +12,6 @@ RUN pip3 install numpy scipy pandas matplotlib -i https://pypi.douban.com/simple
 
 # 删除pip3的缓存。
 RUN rm -rf ~/.cache/pip
+
+ENV JAVA_HOME=/usr/java/jdk1.8.0_131
+ENV PATH $JAVA_HOME/bin:$PATH

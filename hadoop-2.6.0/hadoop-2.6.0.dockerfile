@@ -1,18 +1,13 @@
 FROM ubuntu:16.04
 
-# COPY hadoop-entrypoint.sh /usr/bin/
-# RUN chmod a+x /usr/bin/hadoop-entrypoint.sh
-
-# ENTRYPOINT [ "sh", "-c", "./usr/bin/hadoop-entrypoint.sh; bash"]
-
 # hadoop 环境安装：
-RUN wget http://archive.apache.org/dist/hadoop/common/hadoop-2.8.0/hadoop-2.8.0.tar.gz \
-    && tar -zxvf /hadoop-2.8.0.tar.gz -C /usr/local/ \
-    && mv /usr/local/hadoop-2.8.0 /usr/local/hadoop \
+RUN wget http://archive.apache.org/dist/hadoop/common/hadoop-2.6.0/hadoop-2.6.0.tar.gz \
+    && tar -zxvf /hadoop-2.6.0.tar.gz -C /usr/local/ \
+    && mv /usr/local/hadoop-2.6.0 /usr/local/hadoop \
     && mkdir /usr/local/hadoop/tmp/ \ 
     && mkdir /usr/local/hadoop/data/ \   
     && mkdir /usr/local/hadoop/name/ \ 
-    && rm /hadoop-2.8.0.tar.gz
+    && rm /hadoop-2.6.0.tar.gz
 
 #这个文件默认不存在，需要从 mapred-site.xml.template 复制过来
 RUN cp mapred-site.xml.template mapred-site.xml
