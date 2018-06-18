@@ -1,9 +1,9 @@
 FROM ubuntu:16.04
 
-RUN wget https://github.com/apache/spark/archive/v2.2.0.tar.gz \
-    && tar -zxvf /v2.2.0.tar.gz -C /usr/local/ \
-    && mv /usr/local/spark-2.2.0 /usr/local/spark \
-    && rm /v2.2.0.tar.gz
+RUN wget https://archive.apache.org/dist/spark/spark-1.6.0/spark-1.6.0-bin-hadoop2.6.tgz \
+    && tar -zxvf /spark-1.6.0-bin-hadoop2.6.tgz -C /usr/local/ \
+    && mv /usr/local/spark-1.6.0-bin-hadoop2.6 /usr/local/spark \
+    && rm /spark-1.6.0-bin-hadoop2.6.tgz
 
 RUN cd /usr/local/spark	\
 	&& echo "slave1" >> conf/slaves	\
