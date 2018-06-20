@@ -1,7 +1,7 @@
 version:  '2'
 services:
   master:
-    image: fineplace/spark
+    image: cluster-spark
     container_name: spark-master
     networks:
       default:
@@ -16,7 +16,7 @@ services:
     stdin_open: true
 
   slave1:
-    image: fineplace/spark
+    image: cluster-spark
     container_name: spark-slave1
     networks:
       default:
@@ -31,7 +31,7 @@ services:
     stdin_open: true
 
   slave2:
-    image: fineplace/spark
+    image: cluster-spark
     container_name: spark-slave2
     networks:
       default:

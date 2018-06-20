@@ -1,42 +1,42 @@
 version:  '2'
 services:
   master:
-    image: fineplace/zookeeper
+    image: cluster-zookeeper
     container_name: zk-master
     networks:
       default:
-        ipv4_address: 172.16.0.110
+        ipv4_address: 172.17.0.2
     extra_hosts:
-      - "slave1:172.16.0.111"
-      - "slave2:172.16.0.112"
+      - "slave1:172.17.0.3"
+      - "slave2:172.17.0.4"
     hostname: master
     environment:
       ZK_ID: 1
     tty: true
 
   slave1:
-    image: fineplace/zookeeper
+    image: cluster-zookeeper
     container_name: zk-slave1
     networks:
       default:
-        ipv4_address: 172.16.0.111
+        ipv4_address: 172.17.0.3
     extra_hosts:
-      - "master:172.16.0.110"
-      - "slave2:172.16.0.112"
+      - "master:172.17.0.2"
+      - "slave2:172.17.0.4"
     hostname: slave1
     environment:
       ZK_ID: 2
     tty: true
 
   slave2:
-    image: fineplace/zookeeper
+    image: cluster-zookeeper
     container_name: zk-slave2
     networks:
       default:
-        ipv4_address: 172.16.0.112
+        ipv4_address: 172.17.0.4
     extra_hosts:
-      - "master:172.16.0.110"
-      - "slave1:172.16.0.111"
+      - "master:172.17.0.2"
+      - "slave1:172.17.0.3"
     hostname: slave2
     environment:
       ZK_ID: 3
@@ -50,6 +50,6 @@ networks:
     ipam:
       driver: default
       config:
-      - subnet: 172.16.0.0/16
-        gateway: 172.16.0.249
+      - subnet: 172.17.0.0/17
+
 

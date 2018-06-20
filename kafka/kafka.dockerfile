@@ -6,7 +6,7 @@ RUN wget http://mirrors.tuna.tsinghua.edu.cn/apache/kafka/0.10.2.1/kafka_2.11-0.
     && rm /kafka_2.11-0.10.2.1.tgz \
     && mkdir -p /usr/local/kafka/logs
 
-COPY conf/server.properties /usr/local/kafka/config
+COPY ./conf/server.properties /usr/local/kafka/config
 
 ENV KAFKA_HOME=/usr/local/kafka
 ENV PATH $KAFKA_HOME/bin:$PATH
