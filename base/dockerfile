@@ -5,7 +5,7 @@ ADD ./sources.list /etc/apt/
 
 RUN apt-get update -y && apt-get upgrade -y
 
-RUN apt-get install -y apt-utils wget net-tools openssh-server openssh-client \
+RUN apt-get install -y apt-utils net-tools wget openssh-server openssh-client \
     && rm -rf /var/lib/apt/lists/* && apt-get clean
 
 RUN  wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u172-b11/a58eab1ec242421181065cdc37240b08/jdk-8u172-linux-x64.tar.gz \

@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM cluster-base:v1.0.0
 
 # hadoop 环境安装：
 RUN wget http://archive.apache.org/dist/hadoop/common/hadoop-2.6.0/hadoop-2.6.0.tar.gz \
@@ -24,11 +24,7 @@ RUN cd $HADOOP_HOME	\
 	&& echo "export JAVA_HOME=$JAVA_HOME" >> etc/hadoop/yarn-env.sh \
 	&& echo "slave1" >> etc/hadoop/slaves \
 	&& echo "slave2" >> etc/hadoop/slaves \
-	&& rpm --rebuilddb	\
-	&& yum -y install which	\
-	&& yum -y install openssh-server \
 	&& echo "PermitRootLogin yes" >> /etc/ssh/sshd_config \
-	&& yum -y install openssh-clients \
 	&& mkdir /root/.ssh \
 	&& ssh-keygen -q -t rsa -N '' -f /root/.ssh/id_rsa \
 	&& cat /root/.ssh/id_rsa.pub > /root/.ssh/authorized_keys \
