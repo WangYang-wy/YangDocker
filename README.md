@@ -17,10 +17,16 @@ bash ./deploy.sh
 ubuntu:16.04
 
 ```bash
-docker run -ti --name master --hostname=master ubuntu:16.04 bash
-docker run -ti --name slave1 --hostname=slave1 ubuntu:16.04 bash
-docker run -ti --name slave2 --hostname=slave2 ubuntu:16.04 bash
+docker run -ti --name master --hostname=master ubuntu:16.04 zsh
+docker run -ti --name slave1 --hostname=slave1 ubuntu:16.04 zsh
+docker run -ti --name slave2 --hostname=slave2 ubuntu:16.04 zsh
 ```
+
+## 网络
+
+- master: 172.17.0.2
+- slave1: 172.17.0.3
+- slave2: 172.17.0.4
 
 ## 工具包
 

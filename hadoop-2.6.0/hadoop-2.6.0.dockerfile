@@ -1,4 +1,4 @@
-FROM cluster-base:v1.0.0
+FROM cluster-base
 
 # hadoop 环境安装：
 RUN wget http://archive.apache.org/dist/hadoop/common/hadoop-2.6.0/hadoop-2.6.0.tar.gz \
@@ -22,15 +22,9 @@ RUN cd $HADOOP_HOME	\
 	&& echo "export JAVA_HOME=$JAVA_HOME" >> etc/hadoop/hadoop-env.sh \
 	&& echo "export HADOOP_PREFIX=$HADOOP_PREFIX" >> etc/hadoop/hadoop-env.sh \
 	&& echo "export JAVA_HOME=$JAVA_HOME" >> etc/hadoop/yarn-env.sh \
+	&& echo "master" >> etc/hadoop/masters \
 	&& echo "slave1" >> etc/hadoop/slaves \
-	&& echo "slave2" >> etc/hadoop/slaves \
-	&& echo "PermitRootLogin yes" >> /etc/ssh/sshd_config \
-	&& mkdir /root/.ssh \
-	&& ssh-keygen -q -t rsa -N '' -f /root/.ssh/id_rsa \
-	&& cat /root/.ssh/id_rsa.pub > /root/.ssh/authorized_keys \
-	&& echo "    IdentityFile ~/.ssh/id_rsa" >> /etc/ssh/ssh_config \
-	&& echo "    StrictHostKeyChecking=no" >> /etc/ssh/ssh_config \
-	&& chmod 600 /root/.ssh/authorized_keys 
+	&& echo "slave2" >> etc/hadoop/slaves 
 
 COPY ./conf/core-site.xml $HADOOP_HOME/etc/hadoop
 COPY ./conf/hdfs-site.xml $HADOOP_HOME/etc/hadoop
