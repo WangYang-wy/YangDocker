@@ -1,11 +1,11 @@
 #!/bin/bash
 
-startMaster(){
+startMaster() {
 	cd /usr/local/hadoop/sbin
 	./start-all.sh
 }
 
-main(){
+main() {
 	service sshd restart
 	sleep 5
 
