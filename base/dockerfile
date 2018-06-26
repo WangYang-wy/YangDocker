@@ -3,9 +3,9 @@ FROM ubuntu:16.04
 # 将源更换一下，速度更快。
 ADD ./sources.list /etc/apt/
 
-RUN apt-get update && apt-get upgrade -y
-
-RUN apt-get install -y apt-utils wget openssh-server openssh-client git zsh \
+RUN apt-get update \
+    && apt-get upgrade -y \
+    && apt-get install -y apt-utils wget openssh-server openssh-client git zsh python3 \
     && rm -rf /var/lib/apt/lists/* && apt-get clean
 
 # oh-my-zsh 并且更为 zsh 风格 ys，将zsh替代默认的bash。
@@ -20,7 +20,7 @@ RUN  wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=ac
     && mv /usr/local/jdk1.8.0_172 /usr/local/jdk1.8 \
     && rm /jdk-8u172-linux-x64.tar.gz
 
-RUN wget https://downloads.lightbend.com/scala/2.11.4/scala-2.11.4.tgz \
+RUN wget --no-check-certificate https://downloads.lightbend.com/scala/2.11.4/scala-2.11.4.tgz \
     && tar -zxvf /scala-2.11.4.tgz -C /usr/local/ \
     && mv /usr/local/scala-2.11.4 /usr/local/scala \
     && rm /scala-2.11.4.tgz
@@ -33,7 +33,8 @@ ENV PATH $JAVA_HOME/bin:$PATH
 ENV SCALA_HOME=/usr/local/scala
 ENV PATH $SCALA_HOME/bin:$PATH
 
-# RUN echo 'root:root' |chpasswd
+RUN mkdir /var/run/sshd
+RUN echo 'root:root' |chpasswd
 
 # ssh.
 RUN sed -ri 's/^PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config
