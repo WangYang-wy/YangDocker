@@ -1,13 +1,14 @@
-storm.zookeeper.servers:
+storm.zookeeper.servers: 
     - "master"
     - "slave1"
     - "slave2"
 
 nimbus.host: "master"
-supervisor.slots.ports:
+supervisor.slots.ports: 
     - 6700
     - 6701
     - 6702
     - 6703
     - 6704
     - 6705
+
