@@ -13,8 +13,8 @@ zsh 命令行 ys 主题。
 ## 启动集群
 
 ```bash
-docker network create --subnet=172.20.0.0/16 base-network
-docker run -itd --name base-master --hostname=base-master --net base-network --ip 172.20.0.2 cluster-base zsh
-docker run -itd --name base-slave1 --hostname=base-slave1 --net base-network --ip 172.20.0.3 cluster-base zsh
-docker run -itd --name base-slave2 --hostname=base-slave2 --net base-network --ip 172.20.0.4 cluster-base zsh
+docker network create --subnet=172.20.0.0/16 cluster-network
+docker run -itd --name master --hostname=master --net cluster-network --ip 172.20.0.2 ubuntu:16.04 bash
+docker run -itd --name slave1 --hostname=slave1 --net cluster-network --ip 172.20.0.3 ubuntu:16.04 bash
+docker run -itd --name slave2 --hostname=slave2 --net cluster-network --ip 172.20.0.4 ubuntu:16.04 bash
 ```
