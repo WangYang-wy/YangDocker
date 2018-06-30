@@ -16,7 +16,7 @@ function main() {
 	service ssh restart
 	service sshd restart
 
-	if [ ${ROLE} == "master" ]
+	if [${ROLE}=="master"]
 	then
 		# 先启动 hadoop 集群。
 		hdfs namenode -format

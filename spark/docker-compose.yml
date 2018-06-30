@@ -4,11 +4,11 @@ services:
     image: cluster-spark
     container_name: spark-master
     networks:
-      default:
-        ipv4_address: 172.17.0.2
+      cluster-spark-network:
+        ipv4_address: 172.88.0.2
     extra_hosts:
-      - "slave1:172.17.0.3"
-      - "slave2:172.17.0.4"
+      - "slave1:172.88.0.3"
+      - "slave2:172.88.0.4"
     hostname: master
     environment:
       ROLE: master
@@ -19,11 +19,11 @@ services:
     image: cluster-spark
     container_name: spark-slave1
     networks:
-      default:
-        ipv4_address: 172.17.0.3
+      cluster-spark-network:
+        ipv4_address: 172.88.0.3
     extra_hosts:
-      - "master:172.17.0.2"
-      - "slave2:172.17.0.4"
+      - "master:172.88.0.2"
+      - "slave2:172.88.0.4"
     hostname: slave1
     environment:
       ROLE: slave
@@ -34,11 +34,11 @@ services:
     image: cluster-spark
     container_name: spark-slave2
     networks:
-      default:
-        ipv4_address: 172.17.0.4
+      cluster-spark-network:
+        ipv4_address: 172.88.0.4
     extra_hosts:
-      - "master:172.17.0.2"
-      - "slave1:172.17.0.3"
+      - "master:172.88.0.2"
+      - "slave1:172.88.0.3"
     hostname: slave2
     environment:
       ROLE: slave
@@ -46,12 +46,12 @@ services:
     stdin_open: true
 
 networks:
-  default:
+  cluster-spark-network:
     driver: bridge
     driver_opts:
       com.docker.network.enable_ipv6: "false"
     ipam:
       driver: default
       config:
-      - subnet: 172.17.0.0/16
+      - subnet: 172.88.0.0/16
 
