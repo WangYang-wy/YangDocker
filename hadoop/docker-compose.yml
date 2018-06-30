@@ -1,14 +1,15 @@
 version:  '3'
 services:
+
   master:
     image: cluster-hadoop
     container_name: hadoop-master
     networks:
       default:
-        ipv4_address: 172.17.0.2
+        ipv4_address: 172.88.0.2
     extra_hosts:
-      - "slave1:172.17.0.3"
-      - "slave2:172.17.0.4"
+      - "slave1:172.88.0.3"
+      - "slave2:172.88.0.4"
     hostname: master
     environment:
       ROLE: master
@@ -20,10 +21,10 @@ services:
     container_name: hadoop-slave1
     networks:
       default:
-        ipv4_address: 172.17.0.3
+        ipv4_address: 172.88.0.3
     extra_hosts:
-      - "master:172.17.0.2"
-      - "slave2:172.17.0.4"
+      - "master:172.88.0.2"
+      - "slave2:172.88.0.4"
     hostname: slave1
     environment:
       ROLE: slave
@@ -35,10 +36,10 @@ services:
     container_name: hadoop-slave2
     networks:
       default:
-        ipv4_address: 172.17.0.4
+        ipv4_address: 172.88.0.4
     extra_hosts:
-      - "master:172.17.0.2"
-      - "slave1:172.17.0.3"
+      - "master:172.88.0.2"
+      - "slave1:172.88.0.3"
     hostname: slave2
     environment:
       ROLE: slave
@@ -46,11 +47,11 @@ services:
     stdin_open: true
 
 networks:
-  default:
+  cluster-network:
     driver: bridge
     driver_opts:
       com.docker.network.enable_ipv6: "false"
     ipam:
       driver: default
       config:
-      - subnet: 172.17.0.0/16
+        - subnet: 172.88.0.0/16

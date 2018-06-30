@@ -1,0 +1,3 @@
+FROM cluster-hadoop
+
+COPY ./hosts    /etc/

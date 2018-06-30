@@ -1,4 +1,4 @@
-FROM cluster-base:v0.0.1
+FROM cluster-base
 
 # hadoop 环境安装：
 RUN wget http://archive.apache.org/dist/hadoop/common/hadoop-2.6.0/hadoop-2.6.0.tar.gz \
