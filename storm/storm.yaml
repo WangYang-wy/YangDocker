@@ -11,4 +11,3 @@ supervisor.slots.ports:
     - 6703
     - 6704
     - 6705
-
