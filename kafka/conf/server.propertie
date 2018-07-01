@@ -58,7 +58,8 @@ socket.request.max.bytes=104857600
 ############################# Log Basics #############################
 
 # A comma seperated list of directories under which to store log files
-log.dirs=/tmp/kafka-logs
+log.dirs=/usr/local/kafka/kafka-logs
+zookeeper.connect=master:2181, slave1:2181, slave2:2181
 
 # The default number of log partitions per topic. More partitions allow greater
 # parallelism for consumption, but this will also result in more files across
