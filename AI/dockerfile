@@ -11,11 +11,11 @@ RUN apt-get update && apt-get upgrade -y \
     # 安装 python3 环境。
     && apt-get install -y apt-utils wget python3-dev python3-pip \
     # 安装科学计算库。
-    && pip3 install sklearn numpy pandas ipython matplotlib \
+    && pip3 install sklearn numpy pandas ipython matplotlib -i https://pypi.douban.com/simple/ \
     # 安装 pytorch。
-    && pip3 install torch torchvision \
+    && pip3 install torch torchvision -i https://pypi.douban.com/simple/ \
     # 安装 tensorflow，CPU+GPU。
-    && pip3 install tensorflow tensorflow-gpu \
+    && pip3 install tensorflow tensorflow-gpu -i https://pypi.douban.com/simple/ \
     # 安装 caffe。
     && apt-get install libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler \
     && apt-get install --no-install-recommends libboost-all-dev \
