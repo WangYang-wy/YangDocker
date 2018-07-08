@@ -17,11 +17,11 @@ RUN apt-get update && apt-get upgrade -y \
     # 安装 tensorflow，CPU+GPU。
     && pip3 install tensorflow tensorflow-gpu -i https://pypi.douban.com/simple/ \
     # 安装 caffe。
-    && apt-get install libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler \
-    && apt-get install --no-install-recommends libboost-all-dev \
-    && apt-get install libopenblas-dev liblapack-dev libatlas-base-dev \
-    && apt-get install libgflags-dev libgoogle-glog-dev liblmdb-dev \
-    && apt-get install git cmake build-essential \
+    && apt-get install -y libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler \
+    && apt-get install -y --no-install-recommends libboost-all-dev \
+    && apt-get install -y libopenblas-dev liblapack-dev libatlas-base-dev \
+    && apt-get install -y libgflags-dev libgoogle-glog-dev liblmdb-dev \
+    && apt-get install -y git cmake build-essential \
     && git clone https://github.com/BVLC/caffe.git \
     # 删除一些不再使用的东西，保证镜像购销。
     && apt-get uninstall git \
