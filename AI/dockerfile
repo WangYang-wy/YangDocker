@@ -27,6 +27,3 @@ RUN apt-get update && apt-get upgrade -y \
     && apt-get uninstall git \
     && rm -rf /var/lib/apt/lists/* && apt autoremove && apt-get clean \
     && rm -rf ~/.cache/pip/
-
-# 安装 cuda
-RUN wget https://www.nvidia.com/content/DriverDownload-March2009/confirmation.php?url=/tesla/384.66/nvidia-diag-driver-local-repo-ubuntu1604-384.66_1.0-1_amd64.deb&lang=us&type=Tesla
