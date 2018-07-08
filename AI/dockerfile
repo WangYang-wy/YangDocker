@@ -1,0 +1,15 @@
+FROM ubuntu:16.04
+
+# 将源更换一下，速度更快。
+ADD ./sources.list /etc/apt/
+
+# 其中，安装的 pytorch 中，适用于 cuda8。
+RUN apt-get update \
+    && apt-get upgrade -y \
+    && apt-get install -y apt-utils wget python3 python3-pip \
+    && pip3 install sklearn numpy pandas ipython matplotlib -i https://pypi.douban.com/simple/ \ 
+    && pip3 install torch torchvision -i https://pypi.douban.com/simple/ \
+    && rm -rf /var/lib/apt/lists/* && apt-get clean \
+    && rm -rf ~/.cache/pip/
+
+# 安装 cuda
