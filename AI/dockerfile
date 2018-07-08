@@ -2,14 +2,31 @@ FROM ubuntu:16.04
 
 # 将源更换一下，速度更快。
 ADD ./sources.list /etc/apt/
+RUN mkdir ~/.pip
+ADD ./pip.conf ~/.pip/
 
 # 其中，安装的 pytorch 中，适用于 cuda8。
-RUN apt-get update \
-    && apt-get upgrade -y \
-    && apt-get install -y apt-utils wget python3 python3-pip \
-    && pip3 install sklearn numpy pandas ipython matplotlib -i https://pypi.douban.com/simple/ \ 
-    && pip3 install torch torchvision -i https://pypi.douban.com/simple/ \
-    && rm -rf /var/lib/apt/lists/* && apt-get clean \
+# 其中，需要安装 git 然后下载 caffe，再删除 git。
+RUN apt-get update && apt-get upgrade -y \
+    # 安装 python3 环境。
+    && apt-get install -y apt-utils wget python3-dev python3-pip \
+    # 安装科学计算库。
+    && pip3 install sklearn numpy pandas ipython matplotlib \
+    # 安装 pytorch。
+    && pip3 install torch torchvision \
+    # 安装 tensorflow，CPU+GPU。
+    && pip3 install tensorflow tensorflow-gpu \
+    # 安装 caffe。
+    && apt-get install libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler \
+    && apt-get install --no-install-recommends libboost-all-dev \
+    && apt-get install libopenblas-dev liblapack-dev libatlas-base-dev \
+    && apt-get install libgflags-dev libgoogle-glog-dev liblmdb-dev \
+    && apt-get install git cmake build-essential \
+    && git clone https://github.com/BVLC/caffe.git \
+    # 删除一些不再使用的东西，保证镜像购销。
+    && apt-get uninstall git \
+    && rm -rf /var/lib/apt/lists/* && apt autoremove && apt-get clean \
     && rm -rf ~/.cache/pip/
 
 # 安装 cuda
+RUN wget https://www.nvidia.com/content/DriverDownload-March2009/confirmation.php?url=/tesla/384.66/nvidia-diag-driver-local-repo-ubuntu1604-384.66_1.0-1_amd64.deb&lang=us&type=Tesla
