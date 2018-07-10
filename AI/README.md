@@ -4,12 +4,13 @@
 
 ubuntu:16.04
 
-## 
+## 环境
 
 - tensorflow
 - kears
 - pytorch
 - caffe
+- mxnet
 
 ## 参考
 

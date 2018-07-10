@@ -1,9 +1,7 @@
 FROM ubuntu:16.04
 
-# 将源更换一下，速度更快。
+# 将 apt 源更换一下，速度更快。
 ADD ./sources.list /etc/apt/
-RUN mkdir ~/.pip
-ADD ./pip.conf ~/.pip/
 
 # 其中，安装的 pytorch 中，适用于 cuda8。
 # 其中，需要安装 git 然后下载 caffe，再删除 git。
@@ -23,7 +21,11 @@ RUN apt-get update && apt-get upgrade -y \
     && apt-get install -y libgflags-dev libgoogle-glog-dev liblmdb-dev \
     && apt-get install -y git cmake build-essential \
     && git clone https://github.com/BVLC/caffe.git \
-    # 删除一些不再使用的东西，保证镜像购销。
+    # 删除一些不再使用的东西，保证镜像足够小。
     && apt-get uninstall git \
     && rm -rf /var/lib/apt/lists/* && apt autoremove && apt-get clean \
     && rm -rf ~/.cache/pip/
+
+# 配置 cuda8
+
+# 配置 caffe

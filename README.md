@@ -46,6 +46,10 @@ storm 0.9.3：[下载地址](https://archive.apache.org/dist/storm/apache-storm-
 
 因为所有的环境/安装包都是临时下载的，所以构建过程速度较慢，镜像较大。
 
+## 其他
+
+欢迎 issue。
+
 ## 参考
 
 1. [利用Docker搭建大数据处理集群](https://blog.csdn.net/iigeoxiaoyang/article/details/53020066)
