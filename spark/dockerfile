@@ -12,3 +12,7 @@ COPY ./conf/spark-env.sh /usr/local/spark/conf/
 ENV PYSPARK_PYTHON=python3
 ENV PYSPARK_DRIVER_PYTHON=ipython
 ENV SPARK_HOME=/usr/local/spark
+
+EXPOSE 22
+
+CMD ["/usr/sbin/sshd", "-D"]

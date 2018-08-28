@@ -33,5 +33,4 @@
 		<name>yarn.resourcemanager.webapp.address</name>
 		<value>master:8088</value>
 	</property>
-    
 </configuration>

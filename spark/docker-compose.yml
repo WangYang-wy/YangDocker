@@ -3,6 +3,9 @@ services:
   master:
     image: cluster-spark
     container_name: spark-master
+    volumes: 
+      - ../data/:/data
+      - ./:/spark
     networks:
       cluster-spark-network:
         ipv4_address: 172.88.0.2
@@ -12,12 +15,16 @@ services:
     hostname: master
     environment:
       ROLE: master
-    tty: true
-    stdin_open: true
-
+    command: ['bash','/spark/compose.sh']
+    
   slave1:
     image: cluster-spark
     container_name: spark-slave1
+    volumes: 
+      - ../data/:/data
+      - ./:/spark
+    depends_on: 
+      - master
     networks:
       cluster-spark-network:
         ipv4_address: 172.88.0.3
@@ -27,23 +34,24 @@ services:
     hostname: slave1
     environment:
       ROLE: slave
-    tty: true
-    stdin_open: true
 
   slave2:
     image: cluster-spark
     container_name: spark-slave2
+    volumes: 
+      - ../data/:/data
+      - ./:/spark
     networks:
       cluster-spark-network:
         ipv4_address: 172.88.0.4
     extra_hosts:
       - "master:172.88.0.2"
       - "slave1:172.88.0.3"
+    depends_on: 
+      - master
     hostname: slave2
     environment:
       ROLE: slave
-    tty: true
-    stdin_open: true
 
 networks:
   cluster-spark-network:
@@ -54,4 +62,3 @@ networks:
       driver: default
       config:
       - subnet: 172.88.0.0/16
-
