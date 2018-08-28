@@ -1,6 +1,5 @@
 version:  '3'
 services:
-
   master:
     image: cluster-hadoop
     container_name: hadoop-master
@@ -9,14 +8,15 @@ services:
         ipv4_address: 172.20.0.2
         aliases:
           - hadoop-master
+    volumes: 
+      - ../data/:/data
+      - ./:/hadoop
     extra_hosts:
       - "slave1:172.20.0.3"
       - "slave2:172.20.0.4"
     hostname: master
     environment:
       ROLE: master
-    tty: true
-    stdin_open: true
 
   slave1:
     image: cluster-hadoop
@@ -26,14 +26,15 @@ services:
         ipv4_address: 172.20.0.3
         aliases:
           - hadoop-slave1
+    volumes: 
+      - ../data/:/data
+      - ./:/hadoop
     extra_hosts:
       - "master:172.20.0.2"
       - "slave2:172.20.0.4"
     hostname: slave1
     environment:
       ROLE: slave
-    tty: true
-    stdin_open: true
 
   slave2:
     image: cluster-hadoop
@@ -43,14 +44,15 @@ services:
         ipv4_address: 172.20.0.4
         aliases:
           - hadoop-slave2
+    volumes: 
+      - ../data/:/data
+      - ./:/hadoop
     extra_hosts:
       - "master:172.20.0.2"
       - "slave1:172.20.0.3"
     hostname: slave2
     environment:
       ROLE: slave
-    tty: true
-    stdin_open: true
 
 networks:
   cluster-network:

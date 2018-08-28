@@ -29,3 +29,9 @@ COPY ./conf/mapred-site.xml $HADOOP_HOME/etc/hadoop
 COPY ./conf/yarn-site.xml   $HADOOP_HOME/etc/hadoop
 COPY ./conf/masters         $HADOOP_HOME/etc/hadoop
 COPY ./conf/slaves          $HADOOP_HOME/etc/hadoop
+
+WORKDIR hadoop
+
+EXPOSE 22
+
+CMD ["/usr/sbin/sshd", "-D"]

@@ -14,7 +14,7 @@ main() {
 
 	sleep 5
 
-	if [${ROLE}=="master"]
+	if [ ${ROLE} == "master" ]
 	then
 		hdfs namenode -format
 		startMaster
