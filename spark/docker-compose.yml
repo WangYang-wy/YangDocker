@@ -16,7 +16,7 @@ services:
     environment:
       ROLE: master
     command: ['bash','/spark/compose.sh']
-    
+
   slave1:
     image: cluster-spark
     container_name: spark-slave1

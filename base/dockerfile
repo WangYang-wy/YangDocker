@@ -3,9 +3,7 @@ FROM ubuntu:16.04
 # 将源更换一下，速度更快。
 ADD ./sources.list /etc/apt/
 
-# apt package.
-
-# pip3 package.
+# apt & pip3 package.
 
 RUN apt-get update \
     && apt-get upgrade -y \
