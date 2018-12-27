@@ -8,6 +8,20 @@
 - 配置各个节点之间的免密登陆。
 - zsh 命令行 ys 主题。
 
+## pip 源
+
+[pip.conf](./pip.conf)：使用清华源，加快 python package 下载速度。
+
+## python package
+
+[requirements.txt](./requirements.txt)
+
+## 构建
+
+```shell
+docker -t build cluster-base ./
+```
+
 ## 启动集群
 
 ```bash

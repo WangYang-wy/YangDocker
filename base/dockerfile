@@ -3,39 +3,27 @@ FROM ubuntu:16.04
 # 将源更换一下，速度更快。
 ADD ./sources.list /etc/apt/
 
-# apt & pip3 package.
+# install apt & pip3 package.
 
-RUN apt-get update \
-    && apt-get upgrade -y \
-    && apt-get install -y apt-utils wget openssh-server openssh-client python3 python3-pip \
+RUN apt-get update && apt-get upgrade -y \
+    && apt-get install -y vim apt-utils wget openssh-server openssh-client python3 python3-pip \
+# install java env path:/usr/bin/java
+    && apt-get install -y software-properties-common python-software-properties \
+    && add-apt-repository ppa:webupd8team/java && apt-get update \
+    && apt-get install -y oracle-java8-installer && update-java-alternatives -s java-8-oracle \
+# install scala env path:/usr/bin/scala
+    && apt-get install -y scala \
+# install python3 package
     && pip3 install ipython -i https://pypi.douban.com/simple/ \
     && rm -rf /var/lib/apt/lists/* && apt-get clean \
     && rm -rf ~/.cache/pip/
 
-# # oh-my-zsh 并且更为 zsh 风格 ys，将zsh替代默认的bash。
-# RUN git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh \
-#     && cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc \
-#     && cp ~/.zshrc ~/.zshrc.orig \
-#     && chsh -s /bin/zsh \
-#     && sed -ri 's/^ZSH_THEME="robbyrussell"/ZSH_THEME="ys"/' /root/.zshrc
-
-RUN  wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u172-b11/a58eab1ec242421181065cdc37240b08/jdk-8u172-linux-x64.tar.gz \
-    && tar -zxvf /jdk-8u172-linux-x64.tar.gz -C /usr/local/ \
-    && mv /usr/local/jdk1.8.0_172 /usr/local/jdk1.8 \
-    && rm /jdk-8u172-linux-x64.tar.gz
-
-RUN wget --no-check-certificate https://downloads.lightbend.com/scala/2.11.4/scala-2.11.4.tgz \
-    && tar -zxvf /scala-2.11.4.tgz -C /usr/local/ \
-    && mv /usr/local/scala-2.11.4 /usr/local/scala \
-    && rm /scala-2.11.4.tgz
-
-# Java 环境。
-ENV JAVA_HOME=/usr/local/jdk1.8
-ENV PATH $JAVA_HOME/bin:$PATH
-
-# scala 环境。
-ENV SCALA_HOME=/usr/local/scala
-ENV PATH $SCALA_HOME/bin:$PATH
+# oh-my-zsh 并且更为 zsh 风格 ys，将zsh替代默认的bash。
+RUN git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh \
+    && cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc \
+    && cp ~/.zshrc ~/.zshrc.orig \
+    && chsh -s /bin/zsh \
+    && sed -ri 's/^ZSH_THEME="robbyrussell"/ZSH_THEME="ys"/' /root/.zshrc
 
 RUN mkdir /var/run/sshd
 RUN echo 'root:root' |chpasswd
