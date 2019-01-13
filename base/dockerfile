@@ -1,12 +1,15 @@
 FROM ubuntu:16.04
 
-# 将源更换一下，速度更快。
+# 将 apt 源更换一下，速度更快。
 ADD ./sources.list /etc/apt/
 
-# install apt & pip3 package.
+# 将 pip 源更换一下，提高下载速度。
+RUN mkdir /root/.pip/
+ADD ./pip.conf /root/.pip/
 
+# install apt & pip3 package.
 RUN apt-get update && apt-get upgrade -y \
-    && apt-get install -y vim apt-utils wget openssh-server openssh-client python3 python3-pip \
+    && apt-get install -y apt-utils wget openssh-server openssh-client python3 python3-pip \
 # install java env path:/usr/bin/java
     && apt-get install -y software-properties-common python-software-properties \
     && add-apt-repository ppa:webupd8team/java && apt-get update \
@@ -18,7 +21,7 @@ RUN apt-get update && apt-get upgrade -y \
     && rm -rf /var/lib/apt/lists/* && apt-get clean \
     && rm -rf ~/.cache/pip/
 
-# oh-my-zsh 并且更为 zsh 风格 ys，将zsh替代默认的bash。
+# oh-my-zsh 并且更为 zsh 风格 ys，将 zsh 替代默认的bash。
 RUN git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh \
     && cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc \
     && cp ~/.zshrc ~/.zshrc.orig \
