@@ -13,7 +13,7 @@ ENV PYSPARK_PYTHON=python3
 ENV PYSPARK_DRIVER_PYTHON=ipython
 ENV SPARK_HOME=/usr/local/spark
 
-WORKDIR spark
+WORKDIR /spark
 
 EXPOSE 22
 

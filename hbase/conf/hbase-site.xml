@@ -3,7 +3,7 @@
         <name>hbase.tmp.dir</name>
         <value>/usr/local/hbase/tmp</value>
     </property>
-    
+
     <property>
         <name>hbase.rootdir</name>
         <value>hdfs://master:9000/hbase</value>
@@ -13,7 +13,7 @@
         <name>hbase.cluster.distributed</name>
         <value>true</value>
     </property>
-        
+
     <property>
         <name>hbase.zookeeper.quorum</name>
         <value>master, slave1, slave2</value>
